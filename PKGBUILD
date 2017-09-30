@@ -1,14 +1,16 @@
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Contributor: Handy Menny <Handymenny[at]outlook[dot]com>
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
 pkgver=17.04
 pkgrel=3
 _uver=zesty
-pkgdesc="Xubuntu themes and artwork"
+pkgdesc="Xubuntu themes, artwork, icons"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
 license=("gpl2" "gpl3" "custom:cc-by-sa-3.0")
+conflicts=("elementary-xfce-icons")
 #depends=("xfce-theme-albatross" "xfce-theme-bluebird" "xfce-theme-greybird" "shimmer-wallpapers")
 makedepends=("zip")
 optdepends=("plymouth: For the plymouth theme to work"
@@ -16,8 +18,7 @@ optdepends=("plymouth: For the plymouth theme to work"
         "shimmer-wallpapers: Wallpapers not included in the main package, or git version"
         "xfce-theme-albatross: Official theming, git or stable version"
         "xfce-theme-bluebird: Official theming, git or stable version"
-        "xfce-theme-greybird: Official theming, git or stable version"
-	"elementary-xfce-icons: For matching icon theme, or the git version")
+        "xfce-theme-greybird: Official theming, git or stable version")
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
 	"CC-BY-SA-3.0.txt")
 
@@ -31,8 +32,9 @@ package() {
   msg2 "Install the rest of the files."
   cp -av usr/share/ "${pkgdir}/usr/share/"
 
-  msg2 "Remove Elementary-Xfce bundled with this artwork, is hella outdated."
-  rm -frv "${pkgdir}"/usr/share/icons
+  # Icons from package elementary-xfce-icons don't look so good
+  # msg2 "Remove Elementary-Xfce bundled with this artwork, is hella outdated."
+  # rm -frv "${pkgdir}"/usr/share/icons
 
   msg2 "Move backdrops to a better place for Xfce 4.12+."
   mkdir -p "${pkgdir}/usr/share/backgrounds/xfce"
