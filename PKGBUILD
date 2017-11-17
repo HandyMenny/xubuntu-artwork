@@ -3,9 +3,9 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=17.04
-pkgrel=3
-_uver=zesty
+pkgver=17.10.1
+pkgrel=1
+_uver=artful
 pkgdesc="Xubuntu themes, artwork, icons"
 arch=("any")
 url="https://launchpad.net/xubuntu-artwork"
@@ -46,5 +46,6 @@ package() {
   install -D -m644 "${srcdir}/CC-BY-SA-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/CC-BY-SA-3.0.txt"
 }
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('e8dba4027755d01be541e16fabf4b6f5'
+
+md5sums=('222ecdc9dfd3c69e3ca63aeb2424f98d'
          'd55fbe17f8a79a738b1337f0b96aa064')
